@@ -12,7 +12,7 @@
 let checkUpdate = require('./src/index')
 
 checkUpdate('modularium', '0.1.18-beta.1')
-.then(isNeeded => {
+.then(({ isNeeded, lastVersion }) => {
     console.log(isNeeded)
 })
 .catch(err => {

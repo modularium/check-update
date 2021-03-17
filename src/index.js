@@ -25,7 +25,7 @@ class NoSuchPackageError extends Error {
  * @param {string} name Name of a package.
  * @param {string} version Version of a package.
  * @param {string?} registry Registry of a package. Standard is https://registry.npmjs.org
- * @returns {boolean} True if needed, false if not
+ * @returns {{isNeeded: boolean, lastVersion: string}}
  * @throws {NoSuchVersionError} If version to check is not finded.
  * @throws {NoSuchPackageError} If such a package is not finded on registry.
  */
@@ -41,10 +41,20 @@ const checkUpdate = async (name, version, registry = 'https://registry.npmjs.org
   const lastVersionIndex = versionsKeys.length - 1
   const versionToCheckIndex = versionsKeys.indexOf(version)
 
+  const objectToReturn = {
+    lastVersion: versionsKeys[lastVersionIndex]
+  }
+
   if (lastVersionIndex > versionToCheckIndex) {
-    return true
+    return {
+      ...objectToReturn,
+      isNeeded: true
+    }
   } else {
-    return false
+    return {
+      ...objectToReturn,
+      isNeeded: false
+    }
   }
 }
 

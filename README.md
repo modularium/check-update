@@ -16,7 +16,7 @@ A library to check for updates from npm
 let checkUpdate = require('@modularium/check-update')
 
 checkUpdate('modularium', '0.1.18-beta.1')
-.then(isNeeded => {
+.then(({ isNeeded, lastVersion }) => {
     console.log(isNeeded)
 })
 .catch(err => {
