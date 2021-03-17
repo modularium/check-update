@@ -1,0 +1,33 @@
+{
+  "name": "@modularium/check-update",
+  "version": "0.1.0",
+  "description": "A library to check for updates from npm",
+  "main": "src/index.js",
+  "scripts": {
+    "lint": "standard src/**/*.js",
+    "fix": "standard --fix src/**/*.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/modularium/check-update.git"
+  },
+  "keywords": [
+    "check-update",
+    "modularium"
+  ],
+  "author": {
+    "name": "modularium",
+    "url": "https://github.com/modularium"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/modularium/check-update/issues"
+  },
+  "homepage": "https://github.com/modularium/check-update",
+  "dependencies": {
+    "axios": "^0.21.1"
+  },
+  "devDependencies": {
+    "standard": "^16.0.3"
+  }
+}

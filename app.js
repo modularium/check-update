@@ -1,10 +1,6 @@
-# check-update
-A library to check for updates from npm
-
-## Example of using
-
-```javascript
 /**
+ * https://github.com/modularium/check-update
+ * 
  * Example of using this library
  * Provide name and version of the library you want to check
  * 
@@ -13,7 +9,7 @@ A library to check for updates from npm
  * Check error's code to expect it.
  */
 
-let checkUpdate = require('@modularium/check-update')
+let checkUpdate = require('./src/index')
 
 checkUpdate('modularium', '0.1.18-beta.1')
 .then(isNeeded => {
@@ -30,4 +26,3 @@ checkUpdate('modularium', '0.1.18-beta.1')
         console.error(err)
     }
 })
-```
