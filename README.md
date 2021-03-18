@@ -1,6 +1,11 @@
 # check-update
 A library to check for updates from npm
 
+## Installing
+```shell
+npm install @modularium/check-update
+```
+
 ## Example of using
 
 ```javascript
