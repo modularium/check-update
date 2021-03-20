@@ -8,7 +8,7 @@ npm install @modularium/check-update
 
 ## Way of using it
 
-Function `checkUpdate()` requires 3 arguments, but the last one is optional
+`checkUpdate()` is an async function that requires 3 arguments, but the last one is optional
 
 ```javascript
 let checkUpdate = require('@modularium/check-update')
@@ -17,6 +17,8 @@ checkUpdate(packageName, packageVersion, packageRegistry)
 ```
 
 If your package is on npm registry (https://registry.npmjs.org) then don't provide the last argument
+
+Don't use it with `await` keyword because of throwed errors
 
 #### Example
 ```javascript
