@@ -12,22 +12,30 @@ class NoSuchError extends Error {
  * @async
  */
 const checkUpdate = async (name: string, version: string, registry: string = 'https://registry.npmjs.org'): Promise<{ lastVersion: string, isNeeded: boolean }> => {
-  const response: AxiosResponse<{ versions: { [key: string]: {  } }, status: number }> = await axios.get(`${registry}/${name}`)
+  try {
+    const response: AxiosResponse<{ versions: { [key: string]: {  } }, status: number }> = await axios.get(`${registry}/${name}`, {
+      validateStatus: (status) => status === 200,
+    })
 
-  if (response.status === 404) throw new NoSuchError('There\'s no such a version!', 'noSuchVersion')
+    const { versions } = response.data
+    if (!versions[version]) throw new NoSuchError('There\'s no such a version!', 'noSuchVersion')
 
-  const { versions } = response.data
-  if (!versions[version]) throw new NoSuchError('There\'s no such a package!', 'noSuchPackage')
+    const versionsKeys: string[] = Object.keys(versions)
+    const lastVersionIndex: number = versionsKeys.length - 1
+    const versionToCheckIndex: number = versionsKeys.indexOf(version)
 
-  const versionsKeys: string[] = Object.keys(versions)
-  const lastVersionIndex: number = versionsKeys.length - 1
-  const versionToCheckIndex: number = versionsKeys.indexOf(version)
+    const lastVersion: string = versionsKeys[lastVersionIndex]
 
-  const lastVersion: string = versionsKeys[lastVersionIndex]
-
-  return {
-    lastVersion,
-    isNeeded: lastVersionIndex > versionToCheckIndex
+    return {
+      lastVersion,
+      isNeeded: lastVersionIndex > versionToCheckIndex
+    }
+  } catch (e) {
+    if (e.response && e.response === 404) {
+      throw new NoSuchError('There\'s no such a package!', 'noSuchPackage')
+    } else {
+      throw e
+    }
   }
 }
 

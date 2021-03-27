@@ -65,20 +65,6 @@ var NoSuchError = /** @class */ (function (_super) {
     }
     return NoSuchError;
 }(Error));
-var NoSuchVersionError = /** @class */ (function (_super) {
-    __extends(NoSuchVersionError, _super);
-    function NoSuchVersionError() {
-        return _super.call(this, 'There\'s no such a version!', 'noSuchVersion') || this;
-    }
-    return NoSuchVersionError;
-}(NoSuchError));
-var NoSuchPackageError = /** @class */ (function (_super) {
-    __extends(NoSuchPackageError, _super);
-    function NoSuchPackageError() {
-        return _super.call(this, 'There\'s no such a package!', 'noSuchPackage') || this;
-    }
-    return NoSuchPackageError;
-}(NoSuchError));
 /**
  * Checks if a package needs to be updated.
  *
@@ -87,17 +73,19 @@ var NoSuchPackageError = /** @class */ (function (_super) {
 var checkUpdate = function (name, version, registry) {
     if (registry === void 0) { registry = 'https://registry.npmjs.org'; }
     return __awaiter(void 0, void 0, void 0, function () {
-        var response, versions, versionsKeys, lastVersionIndex, versionToCheckIndex, lastVersion;
+        var response, versions, versionsKeys, lastVersionIndex, versionToCheckIndex, lastVersion, e_1;
         return __generator(this, function (_a) {
             switch (_a.label) {
-                case 0: return [4 /*yield*/, axios_1.default.get(registry + "/" + name)];
+                case 0:
+                    _a.trys.push([0, 2, , 3]);
+                    return [4 /*yield*/, axios_1.default.get(registry + "/" + name, {
+                            validateStatus: function (status) { return status === 200; },
+                        })];
                 case 1:
                     response = _a.sent();
-                    if (response.status === 404)
-                        throw new NoSuchPackageError();
                     versions = response.data.versions;
                     if (!versions[version])
-                        throw new NoSuchVersionError();
+                        throw new NoSuchError('There\'s no such a version!', 'noSuchVersion');
                     versionsKeys = Object.keys(versions);
                     lastVersionIndex = versionsKeys.length - 1;
                     versionToCheckIndex = versionsKeys.indexOf(version);
@@ -106,6 +94,16 @@ var checkUpdate = function (name, version, registry) {
                             lastVersion: lastVersion,
                             isNeeded: lastVersionIndex > versionToCheckIndex
                         }];
+                case 2:
+                    e_1 = _a.sent();
+                    if (e_1.response && e_1.response === 404) {
+                        throw new NoSuchError('There\'s no such a package!', 'noSuchPackage');
+                    }
+                    else {
+                        throw e_1;
+                    }
+                    return [3 /*break*/, 3];
+                case 3: return [2 /*return*/];
             }
         });
     });
