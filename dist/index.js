@@ -96,7 +96,7 @@ var checkUpdate = function (name, version, registry) {
                         }];
                 case 2:
                     e_1 = _a.sent();
-                    if (e_1.response && e_1.response === 404) {
+                    if (e_1.response && e_1.response.status === 404) {
                         throw new NoSuchError('There\'s no such a package!', 'noSuchPackage');
                     }
                     else {
