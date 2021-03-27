@@ -31,7 +31,7 @@ const checkUpdate = async (name: string, version: string, registry: string = 'ht
       isNeeded: lastVersionIndex > versionToCheckIndex
     }
   } catch (e) {
-    if (e.response && e.response === 404) {
+    if (e.response && e.response.status === 404) {
       throw new NoSuchError('There\'s no such a package!', 'noSuchPackage')
     } else {
       throw e
