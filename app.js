@@ -9,7 +9,7 @@
  * Check error's code to expect it.
  */
 
-let checkUpdate = require('./src/index')
+let checkUpdate = require('./index')
 
 checkUpdate('modularium', '0.1.18-beta.1')
 .then(({ isNeeded, lastVersion }) => {
