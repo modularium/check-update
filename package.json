@@ -1,6 +1,6 @@
 {
   "name": "@modularium/check-update",
-  "version": "1.0.10",
+  "version": "1.0.11",
   "description": "A library to check for updates from npm",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
