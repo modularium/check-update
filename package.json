@@ -1,13 +1,12 @@
 {
   "name": "@modularium/check-update",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "description": "A library to check for updates from npm",
   "main": "index.js",
   "scripts": {
     "build": "tsc",
     "docs": "typedoc --tsconfig tsconfig.json --excludePrivate --excludeExternals",
     "lint": "tslint -c tslint.json 'src/**/*.ts'",
-    "prepublish": "npm run build",
     "prepublishOnly": "npm run build"
   },
   "repository": {
