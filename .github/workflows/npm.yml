@@ -13,7 +13,6 @@ jobs:
       - name: Is needed to publish?
         run: |
           readonly local commit=$(git log --oneline --format=%B -n 1 HEAD | head -n 1)
-          
           if [[ $commit == !publish* ]]; then
             echo "ok"
           else
