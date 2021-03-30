@@ -11,7 +11,7 @@ npm install @modularium/check-update
 `checkUpdate()` is an async function that requires 3 arguments, but the last one is optional
 
 ```javascript
-let checkUpdate = require('@modularium/check-update')
+let { checkUpdate } = require('@modularium/check-update')
 
 checkUpdate(packageName, packageVersion, packageRegistry)
 ```
@@ -22,7 +22,7 @@ Don't use it with `await` keyword because of throwed errors
 
 #### Example
 ```javascript
-let checkUpdate = require('@modularium/check-update')
+let { checkUpdate } = require('@modularium/check-update')
 
 checkUpdate('@modularium/discord', '0.1.18-beta.1')
 ```
@@ -36,7 +36,7 @@ On callback `checkUpdate()` returns an object with `isNeeded` and `lastVersion` 
 
 #### Example
 ```javascript
-let checkUpdate = require('@modularium/check-update')
+let { checkUpdate } = require('@modularium/check-update')
 
 checkUpdate('@modularium/discord', '0.1.18-beta.1')
 .then(({ isNeeded, lastVersion }) => {
@@ -64,7 +64,7 @@ This error is being throwed because there's no such package on a registry
 
 #### Example
 ```javascript
-let checkUpdate = require('@modularium/check-update')
+let { checkUpdate } = require('@modularium/check-update')
 
 checkUpdate('@modularium/discord', '0.1.18-beta.1')
 .then(({ isNeeded, lastVersion }) => {
