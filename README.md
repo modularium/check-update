@@ -24,7 +24,7 @@ Don't use it with `await` keyword because of throwed errors
 ```javascript
 let checkUpdate = require('@modularium/check-update')
 
-checkUpdate('modularum', '0.1.18-beta.1')
+checkUpdate('@modularium/discord', '0.1.18-beta.1')
 ```
 
 ### .then
@@ -38,7 +38,7 @@ On callback `checkUpdate()` returns an object with `isNeeded` and `lastVersion` 
 ```javascript
 let checkUpdate = require('@modularium/check-update')
 
-checkUpdate('modularum', '0.1.18-beta.1')
+checkUpdate('@modularium/discord', '0.1.18-beta.1')
 .then(({ isNeeded, lastVersion }) => {
     if (isNeeded) {
         console.log(`Hey! modularium is updated to ${lastVersion}. Please update it!`)
@@ -66,7 +66,7 @@ This error is being throwed because there's no such package on a registry
 ```javascript
 let checkUpdate = require('@modularium/check-update')
 
-checkUpdate('modularum', '0.1.18-beta.1')
+checkUpdate('@modularium/discord', '0.1.18-beta.1')
 .then(({ isNeeded, lastVersion }) => {
     if (isNeeded) {
         console.log(`Hey! modularium is updated to ${lastVersion}. Please update it!`)
