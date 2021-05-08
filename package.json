@@ -1,7 +1,7 @@
 {
   "name": "@modularium/check-update",
   "version": "1.0.12",
-  "description": "A library to check for updates from npm",
+  "description": "A library to check for updates from npm or other registry",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "files": [
@@ -22,7 +22,7 @@
     "update-checker"
   ],
   "author": {
-    "name": "modularium",
+    "name": "redcarti & modularium team",
     "url": "https://github.com/modularium"
   },
   "license": "MIT",
